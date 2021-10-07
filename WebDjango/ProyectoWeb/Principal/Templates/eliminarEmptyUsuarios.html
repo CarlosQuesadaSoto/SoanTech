@@ -1,0 +1,28 @@
+{% include "barra.html" %}
+{% load static %}
+{% block content%}
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/usuarios.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/fuentes.css' %}">
+
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Last-Modified" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+
+</head>
+
+<body>
+    <br><br>
+    <p class="title">Usuarios: Eliminar</p>
+    <form class="forminicio" action="/eliminarUserData/" method="GET">
+        <input class="inputinicio2" autocomplete="off" type="text" name="codigo" placeholder="Introduce el código de operario del Usuario"><br><br>
+        <br><input class="formulariologin2" type="submit" value="Eliminar"><br>
+        <p class="error">{{mensaje}}</p>
+    </form>
+</body>
+
+</html>
+{% endblock %}

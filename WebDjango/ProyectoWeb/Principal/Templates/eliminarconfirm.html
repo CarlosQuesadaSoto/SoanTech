@@ -1,0 +1,47 @@
+{% include "barra.html" %}
+{% load static %}
+{% block content%}
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/dispositivos.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/fuentes.css' %}">
+
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Last-Modified" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+
+</head>
+
+<body>
+    <br><br>
+    <p class="title">¿Estás seguro?</p>
+    <p class="subtitle">Información del dispositivo:</p>
+    <center>
+        <table class="tabla">
+             <tr class="cabecera">
+                 <td><strong>NUMERO DE SERIE</strong></td><td><strong>TIPO</strong></td><td><strong>MARCA</strong></td><td><strong>MODELO</strong></td><td><strong>DEPARTAMENTO</strong></td>
+
+                <tr>
+            {% if dispositivo %}
+
+                    <td>{{dispositivo.serial_number}}</td><td>{{dispositivo.tipo}}</td><td>{{dispositivo.marca}}</td><td>{{dispositivo.modelo}}</td><td>{{dispositivo.id_departamento}}</td>
+                    </tr>
+
+            {% else %}
+                <p>No se encuentran datos.</p>
+            {% endif %}
+             </tr>
+        </table>
+
+    </center>
+    <br><br><hr><br><br>
+    <form class="forminicio" action="/bajadispconfirm/" method="GET">
+        <br><input class="formulariologin2" type="submit" value="Eliminar" name="choose"><br>
+        <br><input class="formulariologin2" type="submit" value="Cancelar" name="choose"><br>
+    </form>
+</body>
+
+</html>
+{% endblock %}

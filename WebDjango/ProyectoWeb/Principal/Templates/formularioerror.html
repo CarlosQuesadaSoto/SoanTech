@@ -1,0 +1,33 @@
+{% load static %}
+{% block content%}
+
+
+
+<html >
+    <head>
+
+        <title>Formulario</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/fuentes.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/formulario.css' %}">
+    </head>
+    <body>
+        <div class="cuerpo">
+            <br>
+            <br>
+             <p class="title">Formulario Valoraci&oacuten.</p>
+             <form action="/envioFormulario/" method="GET" >
+                 <p class="subtitle">N&uacutemero incidencia:</p>
+                 <input class="inputNumeroIncidencia" autocomplete="off" type="text" name="num_incidencia" placeholder="Introduce el numero de incidencia">
+
+                 <p class="subtitle">Valoraci&oacuten:</p><select class="select" name="valoracion" class="select"> <option value="1">MALA</option><option value="2">REGULAR</option><option value="3">BUENA</option><option value="4">MUY BUENA</option><option value="5">EXCELENTE</option></select>
+
+                 <br><br><br><input class="botonEnviar" type="submit" value="Enviar"><br>
+
+                 <br><p class="error">{{mensaje}}</p>
+             </form>
+        </div>
+
+    </body>
+</html>
+
+{% endblock %}

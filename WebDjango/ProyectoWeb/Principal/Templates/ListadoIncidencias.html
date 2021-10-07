@@ -1,0 +1,80 @@
+{% include "barra.html" %}
+{% load static %}
+{% block content%}
+
+<html >
+    <head>
+        <meta charset="UTF-8">
+        <title>Soan Technologies</title>
+
+        <link rel="stylesheet" type="text/css" href="{% static 'css/fuentes.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/listadoIncidencias.css' %}">
+        <script type="text/javascript" src="{% static 'js/modificarSelect.js' %}"></script>
+
+    </head>
+    <body>
+        <br><br><p class="tituloIncidencias"><strong>Listado de incidencias.</strong></p>
+            <form action="/ListadoResueltas/" method="GET">
+                <center><input class="formfiltrar" type="submit" name="ir" value="INCIDENCIAS RESUELTAS"></center>
+            </form>
+        <form action="/ActualizarIncidencias/" action="POST">
+
+            {% if guardado != None %}
+                <p class="mensajeGuardado"><img id="confirmacion" src="{% static 'imagenes/confirmacion.png' %}" alt="imagen"  />      La incidencia numero {{ guardado }} se ha modificado correctamente</p>
+            {% endif %}
+            {% if incidencia %}
+            <center>
+
+                <table class="tabla">
+                     <tr class="cabecera">
+
+                         <td><strong> NUMERO INCIDENCIA</strong></td>  <td><strong> FECHA INICIO</strong></td>  <td><strong> ESTADO</strong></td> <td><strong> OPERADOR</strong></td> <td><strong> SERIAL</strong></td>  <td><strong> ERROR</strong></td> <td><strong> PRIORIDAD</strong></td>
+                        {% for i in incidencia %}
+
+                        <tr id="fila_{{ forloop.counter }}">
+
+                        {% for i2 in incidencia2 %}
+                             {% if i.numero_alta == i2.numero_alta %}
+                                {% if i2.estado < 3 %}
+                                    {% if i2.estado == 2 %}
+
+                                        <form action="/ActualizarIncidencias/" action="POST">
+
+                                        <td><input readonly class="inputsTable" type="text" name="alta" value="{{i2.numero_alta}}"/> </td>  <td ><input readonly class="inputsTable" type="text" name="fechaInicio" value="{{i2.fecha_inicio|date:'yy-m-d'}}"/> </td>  <td><select name="seleccion" class="select"  disabled><option value="{{estado}}" selected>{{estado2}} </option> <option value="1">Iniciada</option><option value="2">En Proceso</option><option value="3">Finalizada</option></select> </td> <td > <input readonly class="inputsTable" type="text" name="codigo" value="{{i2.codigo_id}}"/> </td>
+                                        <td ><input readonly class="inputsTable" type="text" name="serial" value="{{i2.serial_number_id}}"/>  </td> <td><input readonly class="inputsTable" type="text" name="tipo" value="{{i.iderror.tipo_error}}"/> </td> <td ><input readonly class="inputsTable" type="text" name="prioridad" value="{{i.iderror.prioridad}}"/>  </td> <td class="BotonModificar"><button class="estiloModificar" type="button" > <img id="imagenBoton" src="{% static 'imagenes/editarModificado2.png' %}" alt="Editar"  /></button></td><td class="BotonGuardar"><input class="estiloGuardar" type="image" src="{% static 'imagenes/botonGuardar.png' %}" alt="Guardar" disabled></td>
+
+                                        </form>
+                                    {% elif i2.estado == 1 %}
+
+                                         <form action="/ActualizarIncidencias/" action="POST">
+
+                                        <td><input readonly class="inputsTable" type="text" name="alta" value="{{i2.numero_alta}}"/> </td>  <td ><input readonly class="inputsTable" type="text" name="fechaInicio" value="{{i2.fecha_inicio|date:'yy-m-d'}}"/> </td>  <td><select name="seleccion" class="select"  disabled><option value="{{estado}}" selected>{{estado1}} </option> <option value="1">Iniciada</option><option value="2">En Proceso</option><option value="3">Finalizada</option></select> </td> <td > <input readonly class="inputsTable" type="text" name="codigo" value="{{i2.codigo_id}}"/> </td>
+                                        <td ><input readonly class="inputsTable" type="text" name="serial" value="{{i2.serial_number_id}}"/>  </td> <td><input readonly class="inputsTable" type="text" name="tipo" value="{{i.iderror.tipo_error}}"/> </td> <td ><input readonly class="inputsTable" type="text" name="prioridad" value="{{i.iderror.prioridad}}"/>  </td> <td class="BotonModificar"><button class="estiloModificar" type="button" > <img id="imagenBoton" src="{% static 'imagenes/editarModificado2.png' %}" alt="Editar"  /></button></td><td class="BotonGuardar"><input class="estiloGuardar" type="image" src="{% static 'imagenes/botonGuardar.png' %}" alt="Guardar" disabled></td>
+
+                                         </form>
+                        </tr>
+
+                                    {% endif %}
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                     </tr>
+
+
+                    {% endfor %}
+
+
+
+                </table>
+
+            </center>
+
+            {% else %}
+                <p>No se encuentran datos </p>
+            {% endif%}
+
+        </form>
+    </body>
+</html>
+
+{% endblock %}

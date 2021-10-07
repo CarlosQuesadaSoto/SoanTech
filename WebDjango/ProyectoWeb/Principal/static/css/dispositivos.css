@@ -1,0 +1,142 @@
+input.formulariologin{
+    width:400px;
+    height:60px;
+    background-color: #3396e4;
+    border-width:thin;
+    border-style:solid;
+    border-color:white;
+    font-family: SF-Pro-Text-Regular;
+    font-size: 17px;
+    color:white;
+    border-radius: 5px;
+
+}
+
+input[type="submit"].formulariologin:hover {
+    background-color:#146db2;
+}
+input.formulariologin2{
+    width:400px;
+    height:60px;
+    background-color: #3396e4;
+    border-width:thin;
+    border-style:solid;
+    border-color:white;
+    font-family: SF-Pro-Text-Regular;
+    font-size: 17px;
+    color:white;
+    border-radius: 5px;
+    margin-left:350px;
+
+}
+
+input[type="submit"].formulariologin2:hover {
+    background-color:#146db2;
+}
+
+.title{
+    font-family: SF-Pro-Text-Regular;
+    font-size:40px;
+    font-weight: bold;
+    margin-left: 350px;
+}
+.subtitle{
+    font-family: SF-Pro-Text-Regular;
+    font-size:25px;
+    font-weight: bold;
+    margin-left: 350px;
+}
+.inputinicio{
+    width: 400px;
+    height: 60px;
+    padding: 5px;
+    font-family: SF-Pro-Text-Regular;
+    font-size:15px;
+    font-weight: bold;
+    border-radius: 5px;
+
+}
+.inputinicio:focus {
+    border-color:#146db2;
+    font-size:13px;
+}
+.inputinicio2{
+    width: 400px;
+    height: 60px;
+    padding: 5px;
+    font-family: SF-Pro-Text-Regular;
+    font-size:15px;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-left:350px;
+}
+.inputinicio2:focus {
+    border-color:#146db2;
+    font-size:13px;
+}
+.principal{
+    text-align:center;
+}
+.principalhijo{
+    display: inline-block;
+}
+.error{
+    font-family: SF-Pro-Text-Regular;
+    margin-left:350px;
+    color:#de2240;
+    font-size:20px;
+}
+tr{
+    text-align: center;
+    vertical-align: middle;
+    border: 0px solid transparent;
+    font-family: SF-Pro-Text-Regular;
+}
+
+td{
+    text-align: center;
+    vertical-align: middle;
+    font-size: 13px;
+    border: 2px solid black;
+    padding:5px;
+    width: 200px;
+}
+tr.cabecera{
+
+	background-color: #333333;
+	color:white;
+	font-size: 18px;
+	padding:10px;
+
+}
+table.tabla{
+	 border-collapse: collapse;
+}
+
+input.formfiltrar{
+    width:150px;
+    height:30px;
+    background-color: #3396e4;
+    border-width:thin;
+    border-style:solid;
+    border-color:white;
+    font-family: SF-Pro-Text-Regular;
+    font-size: 12px;
+    color:white;
+    border-radius: 5px;
+}
+
+input[type="submit"].formfiltrar:hover {
+    background-color:#146db2;
+}
+.foot{
+    position: absolute;
+    bottom: 0;
+    width:99.5%;
+}
+.parrafoinicio4{
+    font-family: SF-Pro-Text-Regular;
+    font-size:15px;
+    color:black;
+    margin-left: 350px;
+}

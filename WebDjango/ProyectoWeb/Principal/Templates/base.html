@@ -1,0 +1,56 @@
+{% load static %}
+<html>
+
+  <head>
+	  <!-- referencias a css -->
+	  <!--El include base lo quitamos porque da fallo continuamente en la barra de navegacion horizontal del navegador-->
+	  <!--    {% include 'base/css.html' %}-->
+	  <link rel="stylesheet" type="text/css" href="{% static 'css/estadisticas.css' %}">
+	  <link rel="stylesheet" type="text/css" href="{% static 'css/fuentes.css' %}">
+<!--	  <link rel="stylesheet" type="text/css" href="{% static 'css/estilos.css' %}">-->
+
+	  <link rel="icon" href="{% static 'imagenes/stblack.png' %}" type="image/png">
+
+	<!-- Hay veces que los css no se actualizan, y es porque se almacenan en el caché del navegador y hay que ir borrando -->
+	<!-- Se supone que con esto ya no se almacena ahi -->
+	<meta http-equiv="Expires" content="0">
+  	<meta http-equiv="Last-Modified" content="0">
+  	<meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+  	<meta http-equiv="Pragma" content="no-cache">
+
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+
+	<title>Soan Technologies</title>
+  </head>
+  <body>
+  	<div class="contenedor">
+	<header>
+		<nav>
+			<ul class="menuNavegacion">
+				<!-- <a href="#"> es para poner un ejemplo y luego poner el sitio adonde queremos que vaya -->
+				<li><img class="logoimagen" src="{% static 'imagenes/soan.png' %}" alt="logo" /></li>
+				<li><a href="/">Inicio</a></li>
+				<li><a href="/ListadoIncidencias">Incidencias</a></li>
+				<li><a href="/estadisticas">Estad&iacute;sticas</a></li>
+				<li><a href="/dispositivos">Dispositivos</a></li>
+				<li><a href="/usuarios">Usuarios</a></li>
+				<li><a href="/informacion">Informaci&oacute;n</a></li>
+				<li><a href="/cuenta">Cuenta</a></li>
+			</ul>
+
+		</nav>
+
+	</header>
+	</div>
+    <div class="container">
+    {% block content %}
+    {% endblock content %}
+    </div>
+<!--    {% include 'base/js.html' %}-->
+    <script>
+    $(document).ready(function(){
+      {% block jquery %}{% endblock %}
+    })
+    </script>
+  </body>
+</html>

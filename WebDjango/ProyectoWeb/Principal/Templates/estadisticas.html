@@ -1,0 +1,151 @@
+<!--Normalmente iria un extends-->
+{% include "base.html" %}
+{% load static %}
+
+
+<html >
+    <head>
+<!--        <meta charset="UTF-8">-->
+        <title>Soan Technologies</title>
+
+<!--        <link rel="stylesheet" type="text/css" href="{% static 'css/estadisticas.css' %}">-->
+<!--        <link rel="stylesheet" type="text/css" href="{% static 'css/fuentes.css' %}">-->
+
+            <script>
+    {% block jquery %}
+    var endpoint = '/api/chart/data/'
+    var defaultdata = []
+    var labels = []
+    $.ajax({
+        method: "GET",
+        url: endpoint,
+        success: function(data){
+            labels = data.labels
+            labels2 = data.labels2
+            defaultdata = data.default
+            defaultdata2 = data.default2
+            setChart()
+        },
+        error: function(error_data){
+            console.log("error")
+            console.log(error_data)
+        }
+    })
+
+    function setChart(){
+        var ctx = document.getElementById('myChart');
+        var ctx2 = document.getElementById('myChart2');
+
+        var myChart2 = new Chart(ctx2, {
+        type: 'bar',
+        data: {
+            labels: labels2,
+            datasets: [{
+                label: 'Notas valoraciones',
+                data: defaultdata2,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+    var myChart = new Chart(ctx, {
+        type: 'polarArea',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: '# of Votes',
+                data: defaultdata,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+    }
+
+    {% endblock %}
+    </script>
+    </head>
+    <body>
+
+
+
+
+
+{% block content %}
+    <br>
+
+    <br> <br>
+    <p class="titulo">Estadísticas.</p>
+    <center>
+    <form class="forminicio" action="/filtrarstats/" method="GET">
+        <input class="formfiltrar" type="submit" name="fecha" value="TODAS">
+        <input class="formfiltrar" type="submit" name="fecha" value="ÚLTIMO AÑO">
+        <input class="formfiltrar" type="submit" name="fecha" value="ÚLTIMO MES">
+        <input class="formfiltrar" type="submit" name="fecha" value="ÚLTIMA SEMANA">
+    </form>
+    </center>
+    <br> <br>
+        <div class='container'>
+            <div class='col-sm-12' url-endpoint='{% url "api-data" %}'>
+                <div class='col-sm-6'>
+                    <canvas id="myChart" width="100" height="100"></canvas>
+                </div>
+                <div class='col-sm-6'>
+                    <canvas id="myChart2" width="100" height="100"></canvas>
+                </div>
+            </div>
+        </div>
+
+
+{% endblock content %}
+
+    </body>
+</html>

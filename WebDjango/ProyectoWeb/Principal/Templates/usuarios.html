@@ -1,0 +1,86 @@
+{% include "barra.html" %}
+{% load static %}
+{% block content%}
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/usuarios.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/fuentes.css' %}">
+
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Last-Modified" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+
+</head>
+
+<body>
+    <br><br>
+    <p class="title">Usuarios.</p>
+    <p class="subtitle">Selecciona si quieres dar de alta, modificar o eliminar un Usuario.</p>
+    <center>
+        <div class="principal">
+            <div class="principalhijo">
+                <form class="forminicio" action="/altaUser/" method="GET">
+                    <input class="formulariologin" type="submit" id="añadir" value="A&Ntilde;ADIR USUARIO">
+                </form>
+            </div>
+            <div class="principalhijo">
+                <form class="forminicio" action="/modUser/" method="GET">
+                    <input class="formulariologin" type="submit" id="modificar" value="MODIFICAR USUARIO">
+                </form>
+            </div>
+            <div class="principalhijo">
+                <form class="forminicio" action="/eliminarUser/" method="GET">
+                    <input class="formulariologin" type="submit" id="eliminar" value="ELIMINAR USUARIO">
+                </form>
+            </div>
+        </div>
+        <div class="principal">
+            <div class="principalhijo">
+                <form class="forminicio" action="/altaSuperUser/" method="GET">
+                    <input class="formulariologin" type="submit" id="añadirsuper" value="A&Ntilde;ADIR ADMINISTRADOR">
+                </form>
+            </div>
+            <div class="principalhijo">
+                <form class="forminicio" action="/modSuperUser/" method="GET">
+                    <input class="formulariologin" type="submit" id="modificarsuper" value="MODIFICAR ADMINISTRADOR">
+                </form>
+            </div>
+            <div class="principalhijo">
+                <form class="forminicio" action="/eliminarSuperUser/" method="GET">
+                    <input class="formulariologin" type="submit" id="eliminarsuper" value="ELIMINAR ADMINISTRADOR">
+                </form>
+            </div>
+        </div>
+    </center>
+    <hr>
+    <p class="subtitle">Usuarios existentes:</p>
+
+    {% if usuario %}
+        <center>
+            <table class="tabla">
+                 <tr class="cabecera">
+                     <td><strong>C&OacuteDIGO</strong></td><td><strong>NOMBRE</strong></td><td><strong>APELLIDOS</strong></td><td><strong>CORREO</strong></td><td><strong>TIPO</strong></td>
+
+                    <tr>
+                {% for i in usuario %}
+                    {% if i.tipo_usuario == 1%}
+                        <td>{{i.codigo}}</td><td>{{i.nombre}}</td><td>{{i.apellidos}}</td><td>{{i.correo}}</td><td>Administrador</td>
+                    {% else %}
+                        <td>{{i.codigo}}</td><td>{{i.nombre}}</td><td>{{i.apellidos}}</td><td>{{i.correo}}</td><td>Usuario</td>
+                    {% endif %}
+                    </tr>
+
+                {% endfor %}
+                 </tr>
+            </table>
+
+        </center>
+    {% else %}
+        <p>No se encuentran datos </p>
+    {% endif%}
+</body>
+
+</html>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% include "barra.html" %}
+{% load static %}
+{% block content%}
+<html>
+    <head>
+        <title>Soan Technologies</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/inicio.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/fuentes.css' %}">
+    </head>
+
+    <body>
+
+        <form  action="/inicio/" method="GET">
+            <center>
+            <div class="contenedor1">
+                <div class="div1">
+
+                    <img class="logoAnimado"src="{% static 'imagenes/icono.gif' %}" alt="IconoAnimacion"></img>
+                </div>
+                <div class="div2">Bienvenido a Soan Technologies</div>
+            </div>
+            </center>
+                <div class="banner"></div>
+
+
+        
+        
+
+        </form>
+
+
+
+
+
+
+    </body>
+
+</html>
+{% endblock %}

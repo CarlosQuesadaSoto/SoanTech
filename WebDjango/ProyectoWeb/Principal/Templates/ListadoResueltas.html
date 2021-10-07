@@ -1,0 +1,51 @@
+{% include "barra.html" %}
+{% load static %}
+{% block content%}
+
+<html >
+    <head>
+        <meta charset="UTF-8">
+        <title>Soan Technologies</title>
+
+        <link rel="stylesheet" type="text/css" href="{% static 'css/fuentes.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/listadoIncidencias.css' %}">
+
+
+    </head>
+    <body>
+
+            <br><br><p class="tituloIncidencias"><strong>Listado de incidencias resueltas.</strong></p>
+            <form action="/ListadoIncidencias/" method="GET">
+                <center><input class="formfiltrar" type="submit" name="ir" value="INCIDENCIAS EN ACTIVO"></center>
+            </form>
+            {% if incidencia %}
+            <center>
+
+                <table class="tabla">
+                     <tr class="cabecera">
+
+                         <td><strong> NUMERO DE SOLUCI&OacuteN</strong></td>  <td><strong> VALORACI&OacuteN</strong></td>  <td><strong> FECHA FIN</strong></td> <td><strong> T&EacuteCNICO</strong></td> <td><strong> NUMERO DE ALTA</strong></td>
+                        {% for i in incidencia %}
+                            {% for x in incidencia2 %}
+                                {% if i.numero_alta.numero_alta == x.numero_alta %}
+                                    <tr>
+                                    <td><input readonly class="inputsTable" type="text" name="alta" value="{{i.numero_solucion}}"/> </td> <td > <input readonly class="inputsTable" type="text" name="valoracion" value="{{i.valoracion}}"/> </td> <td ><input readonly class="inputsTable" type="text" name="fechaInicio" value="{{i.fecha_fin|date:'yy-m-d'}}"/> </td>
+                                    <td ><input readonly class="inputsTable" type="text" name="tecnico" value="{{i.tecnico}}"/>  </td> <td><input readonly class="inputsTable" type="text" name="num_alta" value="{{x.numero_alta}}"/> </td>
+                                    </tr>
+                                {% endif %}
+                            {% endfor %}
+                        {% endfor %}
+                     </tr>
+
+                </table>
+
+            </center>
+
+            {% else %}
+                <p>No se encuentran datos </p>
+            {% endif%}
+
+    </body>
+</html>
+
+{% endblock %}

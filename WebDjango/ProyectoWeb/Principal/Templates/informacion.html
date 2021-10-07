@@ -1,0 +1,43 @@
+{% include "barra.html" %}
+{% load static %}
+{% block content%}
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/info.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/fuentes.css' %}">
+
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Last-Modified" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+
+</head>
+
+<body>
+    <br><br>
+    <p class="title">Información.</p>
+    <p class="subtitle">¿Has olvidado tu ID de Soan Technologies o tu constraseña?</p>
+    <p class="text">Ponte en contacto con nosotros en <a href="mailto:soantechnologies@gmail.com?Subject=He%20olvidado%20mi%20ID%20o%20contraseña.">
+        Soan Technologies Support</a> y te ayudaremos a recuperar tu usuario o contraseña.</p>
+    <p class="text">Envianos un correo comentandonos tu problema y el equipo téncino se encargará de resolverlo.</p>
+    <br><br><hr size="1">
+
+    <p class="subtitle">Descarga ya nuestra App.</p>
+    <p class="text">Ve a la PlayStore y busca Soan Technologies o escanea el código QR para dirigirte ahí automaticamente.</p>
+    <p class="text">Puedes escanear el código desde  la cámara de tu dispositivo móvil o <a href="https://play.google.com/store/apps/details?id=com.netflix.mediaclient&hl=es">
+        descargarla desde aquí.</a>
+    </p>
+    <img class="qrimg" align="left" src="{% static 'imagenes/qrnetflix.png' %}" alt="logo" />
+    <br><br><br><br><br><br><br><br><br><br><br><hr size="1">
+
+    <p class="subtitle">¿Necesitas registrarte?</p>
+    <p class="text">Si necesitas registrarte en Soan Technologies para acceder a las secciones para administradores</p>
+    <p class="text">ponte en contacto con nosotros a través de <a href="mailto:soantechnologies@gmail.com?Subject=Necesito%20registrarme%20como%20administrador.">
+        Soan Technologies Support</a> y nuestro equipo técnico se encargará.
+    </p>
+
+</body>
+
+</html>
+{% endblock %}

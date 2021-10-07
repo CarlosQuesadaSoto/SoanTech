@@ -1,0 +1,75 @@
+{% include "barra.html" %}
+{% load static %}
+{% block content%}
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/dispositivos.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/fuentes.css' %}">
+
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Last-Modified" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+
+</head>
+
+<body>
+    <br><br>
+    <p class="title">Dispositivos.</p>
+    <p class="subtitle">Selecciona si quieres dar de alta, modificar o eliminar un dispositivo.</p>
+    <center>
+        <div id="principal">
+            <div class="principalhijo">
+                <form class="forminicio" action="/alta/" method="GET">
+                    <input class="formulariologin" type="submit" id="añadir" value="A&Ntilde;ADIR DISPOSITIVO">
+                </form>
+            </div>
+            <div class="principalhijo">
+                <form class="forminicio" action="/mod/" method="GET">
+                    <input class="formulariologin" type="submit" id="modificar" value="MODIFICAR DISPOSITIVO">
+                </form>
+            </div>
+            <div class="principalhijo">
+                <form class="forminicio" action="/baja/" method="GET">
+                    <input class="formulariologin" type="submit" id="eliminar" value="ELIMINAR DISPOSITIVO">
+                </form>
+            </div>
+        </div>
+    </center>
+    <hr>
+    <p class="subtitle">Dispositivos existentes:</p>
+    <center>
+    <form class="forminicio" action="/filtrar/" method="GET">
+        <input class="formfiltrar" type="submit" name="tipo" value="TODOS">
+        <input class="formfiltrar" type="submit" name="tipo" value="PC">
+        <input class="formfiltrar" type="submit" name="tipo" value="IMPRESORA">
+        <input class="formfiltrar" type="submit" name="tipo" value="TABLET">
+        <input class="formfiltrar" type="submit" name="tipo" value="MONITOR">
+        <input class="formfiltrar" type="submit" name="tipo" value="BARRAS">
+        <input class="formfiltrar" type="submit" name="tipo" value="IMPRESOR">
+        <input class="formfiltrar" type="submit" name="tipo" value="RFID">
+    </form>
+    </center>
+    {% if dispositivo %}
+        <center>
+            <table class="tabla">
+                 <tr class="cabecera">
+                     <td><strong>NUMERO DE SERIE</strong></td><td><strong>TIPO</strong></td><td><strong>MARCA</strong></td><td><strong>MODELO</strong></td><td><strong>DEPARTAMENTO</strong></td>
+
+                    <tr>
+                {% for i in dispositivo %}
+                    <td>{{i.serial_number}}</td><td>{{i.tipo}}</td><td>{{i.marca}}</td><td>{{i.modelo}}</td><td>{{i.id_departamento.nombre}}</td>
+                    </tr>
+                {% endfor %}
+                 </tr>
+            </table>
+
+        </center>
+    {% else %}
+        <p>No se encuentran datos </p>
+    {% endif%}
+</body>
+
+</html>
+{% endblock %}

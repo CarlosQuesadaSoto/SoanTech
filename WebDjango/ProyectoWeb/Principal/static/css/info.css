@@ -1,0 +1,21 @@
+.title{
+    font-family: SF-Pro-Text-Regular;
+    font-size:40px;
+    font-weight: bold;
+    margin-left: 350px;
+}
+.subtitle{
+    font-family: SF-Pro-Text-Regular;
+    font-size:25px;
+    font-weight: bold;
+    margin-left: 350px;
+}
+.text{
+    font-family: SF-Pro-Text-Regular;
+    font-size:15px;
+    margin-left: 350px;
+}
+.qrimg{
+    height:200px;
+    margin-left: 350px;
+}

@@ -1,0 +1,32 @@
+{% include "barra.html" %}
+{% load static %}
+{% block content%}
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/usuarios.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/fuentes.css' %}">
+
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Last-Modified" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+
+</head>
+
+<body>
+   <br><br>
+    <p class="title">Administradores: Alta</p>
+    <form class="forminicio" action="/altaSuperUserData/" method="GET">
+        <input class="inputinicio2" autocomplete="off" type="text" name="nombre" placeholder="Introduce el nombre"><br><br>
+        <input class="inputinicio2" autocomplete="off" type="text" name="apellidos" placeholder="Introduce apellidos"><br><br>
+        <input class="inputinicio2" autocomplete="off" type="text" name="correo" placeholder="Introduce el correo electrónico"><br><br>
+        <input class="inputinicio2" autocomplete="off" type="text" name="codigo" placeholder="Introduce el código de administrador"><br><br>
+        <input class="inputinicio2" autocomplete="off" type="text" name="password" placeholder="Introduce la contraseña del administrador"><br><br>
+        <br><input class="formulariologin2" type="submit" value="Registrar"><br>
+        <p class="error">{{mensaje}}</p>
+    </form>
+</body>
+
+</html>
+{% endblock %}
